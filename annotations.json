@@ -1,0 +1,52 @@
+{
+  "annotations": [
+    {
+      "stepId": "check-account",
+      "journeyId": "user-onboarding",
+      "type": "question",
+      "text": "Should we offer a 'Continue as Guest' option here for users who don't want to create an account immediately?",
+      "priority": "required",
+      "createdAt": "2026-02-23T10:00:00.000Z"
+    },
+    {
+      "stepId": "ai-categorize",
+      "journeyId": "create-task",
+      "type": "note",
+      "text": "AI categorization runs on-device with a local model. No network call needed here.",
+      "priority": "suggestion",
+      "createdAt": "2026-02-23T10:05:00.000Z"
+    },
+    {
+      "stepId": "filter-sheet",
+      "journeyId": "browse-and-filter",
+      "type": "change-request",
+      "text": "Add a 5th filter option: 'By assignee' — required for the team plan tier.",
+      "priority": "blocker",
+      "createdAt": "2026-02-23T10:10:00.000Z"
+    },
+    {
+      "stepId": "share-setup-page",
+      "journeyId": "first-open",
+      "type": "note",
+      "text": "Must be crystal clear. Are we able to get a link on this page or item the user can interact with to make this modification right here?",
+      "priority": "suggestion",
+      "createdAt": "2026-02-24T14:35:40.792Z"
+    },
+    {
+      "stepId": "tap-mic",
+      "journeyId": "voice-note",
+      "type": "note",
+      "text": "Microphone placement must meet best practices, bottom of screen, potentially align right.",
+      "priority": "suggestion",
+      "createdAt": "2026-02-24T14:37:13.227Z"
+    },
+    {
+      "stepId": "search",
+      "journeyId": "browse-notes",
+      "type": "note",
+      "text": "Search bar should be along bottom",
+      "priority": "suggestion",
+      "createdAt": "2026-02-24T14:37:30.378Z"
+    }
+  ]
+}

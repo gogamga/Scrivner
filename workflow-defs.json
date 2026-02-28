@@ -1,0 +1,795 @@
+{
+  "journeys": [
+    {
+      "id": "first-open",
+      "name": "First Time Setup",
+      "description": "First app launch walks through onboarding pages explaining features, then lands on the main notes list",
+      "steps": [
+        {
+          "id": "app-launch",
+          "label": "Open App for First Time",
+          "screen": "onboarding-welcome",
+          "swiftFile": "ExampleApp/Sources/UI/Onboarding/OnboardingView.swift",
+          "type": "system",
+          "next": ["welcome-page"]
+        },
+        {
+          "id": "welcome-page",
+          "label": "Welcome Screen",
+          "screen": "onboarding-welcome",
+          "swiftFile": "ExampleApp/Sources/UI/Onboarding/WelcomePageView.swift",
+          "type": "display",
+          "next": ["capture-page"]
+        },
+        {
+          "id": "capture-page",
+          "label": "Learn About Capture",
+          "screen": "onboarding-capture",
+          "swiftFile": "ExampleApp/Sources/UI/Onboarding/CaptureAnywherePage.swift",
+          "type": "display",
+          "next": ["share-setup-page"]
+        },
+        {
+          "id": "share-setup-page",
+          "label": "Set Up Share Extension",
+          "screen": "onboarding-share-setup",
+          "swiftFile": "ExampleApp/Sources/UI/Onboarding/ShareSetupGuidePage.swift",
+          "type": "action",
+          "next": ["organize-page"]
+        },
+        {
+          "id": "organize-page",
+          "label": "Organize Your Notes",
+          "screen": "onboarding-organize",
+          "swiftFile": "ExampleApp/Sources/UI/Onboarding/OrganizePage.swift",
+          "type": "display",
+          "next": ["get-started-page"]
+        },
+        {
+          "id": "get-started-page",
+          "label": "Tap Get Started",
+          "screen": "onboarding-get-started",
+          "swiftFile": "ExampleApp/Sources/UI/Onboarding/GetStartedPage.swift",
+          "type": "action",
+          "next": ["main-list"]
+        },
+        {
+          "id": "main-list",
+          "label": "Your Notes List",
+          "screen": "main-list",
+          "swiftFile": "ExampleApp/ContentView.swift",
+          "type": "display",
+          "next": []
+        }
+      ]
+    },
+    {
+      "id": "capture-note",
+      "name": "Save a New Note",
+      "description": "Create a new text, URL, or image note from the main list using the add button",
+      "steps": [
+        {
+          "id": "notes-list",
+          "label": "Your Notes",
+          "screen": "main-list",
+          "swiftFile": "ExampleApp/ContentView.swift",
+          "type": "display",
+          "next": ["tap-add"]
+        },
+        {
+          "id": "tap-add",
+          "label": "Tap the + Button",
+          "screen": "main-list",
+          "swiftFile": "ExampleApp/ContentView.swift",
+          "type": "action",
+          "next": ["add-form"]
+        },
+        {
+          "id": "add-form",
+          "label": "New Note Form",
+          "screen": "add-item",
+          "swiftFile": "ExampleApp/Sources/UI/Views/AddItemView.swift",
+          "type": "display",
+          "next": ["pick-type"]
+        },
+        {
+          "id": "pick-type",
+          "label": "Choose Content Type",
+          "screen": "add-item",
+          "swiftFile": "ExampleApp/Sources/UI/Views/AddItemView.swift",
+          "type": "decision",
+          "next": ["enter-text", "enter-url", "pick-image"],
+          "edgeLabels": ["Text", "URL", "Image"]
+        },
+        {
+          "id": "enter-text",
+          "label": "Type Your Note",
+          "screen": "add-item",
+          "swiftFile": "ExampleApp/Sources/UI/Views/AddItemView.swift",
+          "type": "input",
+          "next": ["add-tags-category"]
+        },
+        {
+          "id": "enter-url",
+          "label": "Paste a URL",
+          "screen": "add-item",
+          "swiftFile": "ExampleApp/Sources/UI/Views/AddItemView.swift",
+          "type": "input",
+          "next": ["add-tags-category"]
+        },
+        {
+          "id": "pick-image",
+          "label": "Select an Image",
+          "screen": "add-item",
+          "swiftFile": "ExampleApp/Sources/UI/Views/AddItemView.swift",
+          "type": "action",
+          "next": ["add-tags-category"]
+        },
+        {
+          "id": "add-tags-category",
+          "label": "Add Tags & Category",
+          "screen": "add-item",
+          "swiftFile": "ExampleApp/Sources/UI/Views/AddItemView.swift",
+          "type": "input",
+          "next": ["save-note"]
+        },
+        {
+          "id": "save-note",
+          "label": "Tap Save",
+          "screen": "add-item",
+          "swiftFile": "ExampleApp/Sources/UI/Views/AddItemView.swift",
+          "type": "action",
+          "next": ["back-to-list"]
+        },
+        {
+          "id": "back-to-list",
+          "label": "Back to Notes List",
+          "screen": "main-list",
+          "swiftFile": "ExampleApp/ContentView.swift",
+          "type": "display",
+          "next": []
+        }
+      ]
+    },
+    {
+      "id": "voice-note",
+      "name": "Record a Voice Note",
+      "description": "Record speech with the microphone, get automatic transcription, and save as a note",
+      "steps": [
+        {
+          "id": "notes-list",
+          "label": "Your Notes",
+          "screen": "main-list",
+          "swiftFile": "ExampleApp/ContentView.swift",
+          "type": "display",
+          "next": ["tap-mic"]
+        },
+        {
+          "id": "tap-mic",
+          "label": "Tap the Microphone",
+          "screen": "main-list",
+          "swiftFile": "ExampleApp/ContentView.swift",
+          "type": "action",
+          "next": ["voice-screen"]
+        },
+        {
+          "id": "voice-screen",
+          "label": "Voice Recording Screen",
+          "screen": "voice-note",
+          "swiftFile": "ExampleApp/Sources/UI/Views/VoiceNoteView.swift",
+          "type": "display",
+          "next": ["start-recording"]
+        },
+        {
+          "id": "start-recording",
+          "label": "Tap Record Button",
+          "screen": "voice-note",
+          "swiftFile": "ExampleApp/Sources/UI/Views/VoiceNoteView.swift",
+          "type": "action",
+          "next": ["transcription"]
+        },
+        {
+          "id": "transcription",
+          "label": "Speech Turns to Text",
+          "screen": "voice-note",
+          "swiftFile": "ExampleApp/Sources/UI/Views/VoiceNoteView.swift",
+          "type": "system",
+          "next": ["stop-recording"]
+        },
+        {
+          "id": "stop-recording",
+          "label": "Tap Stop",
+          "screen": "voice-note",
+          "swiftFile": "ExampleApp/Sources/UI/Views/VoiceNoteView.swift",
+          "type": "action",
+          "next": ["add-voice-details"]
+        },
+        {
+          "id": "add-voice-details",
+          "label": "Add Note & Category",
+          "screen": "voice-note",
+          "swiftFile": "ExampleApp/Sources/UI/Views/VoiceNoteView.swift",
+          "type": "input",
+          "next": ["save-voice"]
+        },
+        {
+          "id": "save-voice",
+          "label": "Tap Save",
+          "screen": "voice-note",
+          "swiftFile": "ExampleApp/Sources/UI/Views/VoiceNoteView.swift",
+          "type": "action",
+          "next": ["back-to-list"]
+        },
+        {
+          "id": "back-to-list",
+          "label": "Back to Notes List",
+          "screen": "main-list",
+          "swiftFile": "ExampleApp/ContentView.swift",
+          "type": "display",
+          "next": []
+        }
+      ]
+    },
+    {
+      "id": "browse-notes",
+      "name": "Find Your Notes",
+      "description": "Search, filter, switch between list and grid views, and find specific notes",
+      "steps": [
+        {
+          "id": "notes-list",
+          "label": "Your Notes",
+          "screen": "main-list",
+          "swiftFile": "ExampleApp/ContentView.swift",
+          "type": "display",
+          "next": ["switch-view", "search", "open-filters", "tap-note"],
+          "edgeLabels": ["Grid view", "Search", "Filter", "Open note"]
+        },
+        {
+          "id": "switch-view",
+          "label": "Switch to Grid View",
+          "screen": "main-list",
+          "swiftFile": "ExampleApp/ContentView.swift",
+          "type": "action",
+          "next": ["grid-view"]
+        },
+        {
+          "id": "grid-view",
+          "label": "Grid View",
+          "screen": "main-list-grid",
+          "swiftFile": "ExampleApp/ContentView.swift",
+          "type": "display",
+          "next": ["tap-note"]
+        },
+        {
+          "id": "search",
+          "label": "Type in Search Bar",
+          "screen": "main-list",
+          "swiftFile": "ExampleApp/ContentView.swift",
+          "type": "input",
+          "next": ["tap-note"]
+        },
+        {
+          "id": "open-filters",
+          "label": "Tap Filter Button",
+          "screen": "main-list",
+          "swiftFile": "ExampleApp/ContentView.swift",
+          "type": "action",
+          "next": ["filter-sheet"]
+        },
+        {
+          "id": "filter-sheet",
+          "label": "Set Filters & Sorting",
+          "screen": "search-filters",
+          "swiftFile": "ExampleApp/Sources/UI/Views/SearchFilterView.swift",
+          "type": "input",
+          "next": ["grouped-results"]
+        },
+        {
+          "id": "grouped-results",
+          "label": "Grouped Notes List",
+          "screen": "grouped-list",
+          "swiftFile": "ExampleApp/Sources/UI/Views/GroupedListView.swift",
+          "type": "display",
+          "next": ["tap-note"]
+        },
+        {
+          "id": "tap-note",
+          "label": "Tap a Note",
+          "screen": "main-list",
+          "swiftFile": "ExampleApp/ContentView.swift",
+          "type": "action",
+          "next": ["note-detail"]
+        },
+        {
+          "id": "note-detail",
+          "label": "Note Details",
+          "screen": "item-detail",
+          "swiftFile": "ExampleApp/Sources/UI/Views/ItemDetailView.swift",
+          "type": "display",
+          "next": []
+        }
+      ]
+    },
+    {
+      "id": "edit-note",
+      "name": "Edit an Existing Note",
+      "description": "Open a note, edit its text, tags, or category, and save changes",
+      "steps": [
+        {
+          "id": "notes-list",
+          "label": "Your Notes",
+          "screen": "main-list",
+          "swiftFile": "ExampleApp/ContentView.swift",
+          "type": "display",
+          "next": ["tap-note"]
+        },
+        {
+          "id": "tap-note",
+          "label": "Tap a Note",
+          "screen": "main-list",
+          "swiftFile": "ExampleApp/ContentView.swift",
+          "type": "action",
+          "next": ["note-detail"]
+        },
+        {
+          "id": "note-detail",
+          "label": "Note Details",
+          "screen": "item-detail",
+          "swiftFile": "ExampleApp/Sources/UI/Views/ItemDetailView.swift",
+          "type": "display",
+          "next": ["edit-note-text", "edit-category", "edit-tags"],
+          "edgeLabels": ["Edit note", "Change category", "Manage tags"]
+        },
+        {
+          "id": "edit-note-text",
+          "label": "Edit the Note Text",
+          "screen": "item-detail",
+          "swiftFile": "ExampleApp/Sources/UI/Views/ItemDetailView.swift",
+          "type": "input",
+          "next": ["save-changes"]
+        },
+        {
+          "id": "edit-category",
+          "label": "Change Category",
+          "screen": "item-detail",
+          "swiftFile": "ExampleApp/Sources/UI/Views/ItemDetailView.swift",
+          "type": "input",
+          "next": ["save-changes"]
+        },
+        {
+          "id": "edit-tags",
+          "label": "Add or Remove Tags",
+          "screen": "item-detail",
+          "swiftFile": "ExampleApp/Sources/UI/Views/ItemDetailView.swift",
+          "type": "input",
+          "next": ["save-changes"]
+        },
+        {
+          "id": "save-changes",
+          "label": "Tap Save",
+          "screen": "item-detail",
+          "swiftFile": "ExampleApp/Sources/UI/Views/ItemDetailView.swift",
+          "type": "action",
+          "next": ["back-to-list"]
+        },
+        {
+          "id": "back-to-list",
+          "label": "Back to Notes List",
+          "screen": "main-list",
+          "swiftFile": "ExampleApp/ContentView.swift",
+          "type": "display",
+          "next": []
+        }
+      ]
+    },
+    {
+      "id": "organize",
+      "name": "Tags & Categories",
+      "description": "Manage your tags by adding, editing, or removing them from the tag management screen",
+      "steps": [
+        {
+          "id": "open-settings",
+          "label": "Go to Settings",
+          "screen": "settings",
+          "swiftFile": "ExampleApp/Sources/UI/Views/MainTabView.swift",
+          "type": "action",
+          "next": ["settings-screen"]
+        },
+        {
+          "id": "settings-screen",
+          "label": "Settings Screen",
+          "screen": "settings",
+          "swiftFile": "ExampleApp/Sources/UI/Views/SettingsView.swift",
+          "type": "display",
+          "next": ["tap-manage-tags"]
+        },
+        {
+          "id": "tap-manage-tags",
+          "label": "Tap Manage Tags",
+          "screen": "settings",
+          "swiftFile": "ExampleApp/Sources/UI/Views/SettingsView.swift",
+          "type": "action",
+          "next": ["tag-management"]
+        },
+        {
+          "id": "tag-management",
+          "label": "Tag Management",
+          "screen": "tag-management",
+          "swiftFile": "ExampleApp/Sources/UI/Views/TagManagementView.swift",
+          "type": "display",
+          "next": ["add-tag", "edit-tag", "delete-tag"],
+          "edgeLabels": ["Add new", "Edit existing", "Delete"]
+        },
+        {
+          "id": "add-tag",
+          "label": "Type a New Tag Name",
+          "screen": "tag-management",
+          "swiftFile": "ExampleApp/Sources/UI/Views/TagManagementView.swift",
+          "type": "input",
+          "next": ["tap-add-tag"]
+        },
+        {
+          "id": "tap-add-tag",
+          "label": "Tap Add",
+          "screen": "tag-management",
+          "swiftFile": "ExampleApp/Sources/UI/Views/TagManagementView.swift",
+          "type": "action",
+          "next": ["tag-management"]
+        },
+        {
+          "id": "edit-tag",
+          "label": "Tap a Tag to Edit",
+          "screen": "tag-management",
+          "swiftFile": "ExampleApp/Sources/UI/Views/TagManagementView.swift",
+          "type": "action",
+          "next": ["rename-tag"]
+        },
+        {
+          "id": "rename-tag",
+          "label": "Rename the Tag",
+          "screen": "tag-management",
+          "swiftFile": "ExampleApp/Sources/UI/Views/TagManagementView.swift",
+          "type": "input",
+          "next": ["tag-management"]
+        },
+        {
+          "id": "delete-tag",
+          "label": "Swipe to Delete Tag",
+          "screen": "tag-management",
+          "swiftFile": "ExampleApp/Sources/UI/Views/TagManagementView.swift",
+          "type": "action",
+          "next": ["confirm-delete"]
+        },
+        {
+          "id": "confirm-delete",
+          "label": "Confirm Delete?",
+          "screen": "tag-management",
+          "swiftFile": "ExampleApp/Sources/UI/Views/TagManagementView.swift",
+          "type": "decision",
+          "next": ["tag-management", "tag-management"],
+          "edgeLabels": ["Delete", "Cancel"]
+        }
+      ]
+    },
+    {
+      "id": "ai-setup",
+      "name": "Set Up AI Features",
+      "description": "Configure an AI provider by entering your API key and selecting a model",
+      "steps": [
+        {
+          "id": "open-settings",
+          "label": "Go to Settings",
+          "screen": "settings",
+          "swiftFile": "ExampleApp/Sources/UI/Views/MainTabView.swift",
+          "type": "action",
+          "next": ["settings-screen"]
+        },
+        {
+          "id": "settings-screen",
+          "label": "Settings Screen",
+          "screen": "settings",
+          "swiftFile": "ExampleApp/Sources/UI/Views/SettingsView.swift",
+          "type": "display",
+          "next": ["tap-ai-agents"]
+        },
+        {
+          "id": "tap-ai-agents",
+          "label": "Tap AI Agents",
+          "screen": "settings",
+          "swiftFile": "ExampleApp/Sources/UI/Views/SettingsView.swift",
+          "type": "action",
+          "next": ["llm-settings"]
+        },
+        {
+          "id": "llm-settings",
+          "label": "AI Provider List",
+          "screen": "llm-settings",
+          "swiftFile": "ExampleApp/Sources/UI/Views/LLMSettingsView.swift",
+          "type": "display",
+          "next": ["pick-provider"]
+        },
+        {
+          "id": "pick-provider",
+          "label": "Choose a Provider",
+          "screen": "llm-settings",
+          "swiftFile": "ExampleApp/Sources/UI/Views/LLMSettingsView.swift",
+          "type": "decision",
+          "next": ["enter-key", "enter-key", "enter-key", "enter-key"],
+          "edgeLabels": ["OpenAI", "Anthropic", "Google", "xAI"]
+        },
+        {
+          "id": "enter-key",
+          "label": "Enter API Key",
+          "screen": "api-key-entry",
+          "swiftFile": "ExampleApp/Sources/UI/Views/LLMSettingsView.swift",
+          "type": "input",
+          "next": ["test-connection"]
+        },
+        {
+          "id": "test-connection",
+          "label": "Test Connection",
+          "screen": "api-key-entry",
+          "swiftFile": "ExampleApp/Sources/UI/Views/LLMSettingsView.swift",
+          "type": "system",
+          "next": ["select-model"]
+        },
+        {
+          "id": "select-model",
+          "label": "Select AI Model",
+          "screen": "llm-settings",
+          "swiftFile": "ExampleApp/Sources/UI/Views/LLMSettingsView.swift",
+          "type": "input",
+          "next": ["done"]
+        },
+        {
+          "id": "done",
+          "label": "AI Is Ready",
+          "screen": "llm-settings",
+          "swiftFile": "ExampleApp/Sources/UI/Views/LLMSettingsView.swift",
+          "type": "display",
+          "next": []
+        }
+      ]
+    },
+    {
+      "id": "export",
+      "name": "Export Notes",
+      "description": "Export your notes to PDF, CSV, JSON, or Markdown format for sharing or backup",
+      "steps": [
+        {
+          "id": "notes-list",
+          "label": "Your Notes",
+          "screen": "main-list",
+          "swiftFile": "ExampleApp/ContentView.swift",
+          "type": "display",
+          "next": ["tap-export"]
+        },
+        {
+          "id": "tap-export",
+          "label": "Tap Export Button",
+          "screen": "main-list",
+          "swiftFile": "ExampleApp/ContentView.swift",
+          "type": "action",
+          "next": ["export-sheet"]
+        },
+        {
+          "id": "export-sheet",
+          "label": "Export Screen",
+          "screen": "export",
+          "swiftFile": "ExampleApp/Sources/UI/Views/ExportView.swift",
+          "type": "display",
+          "next": ["choose-format"]
+        },
+        {
+          "id": "choose-format",
+          "label": "Choose Format",
+          "screen": "export",
+          "swiftFile": "ExampleApp/Sources/UI/Views/ExportView.swift",
+          "type": "decision",
+          "next": ["tap-export-btn", "tap-export-btn", "tap-export-btn", "tap-export-btn"],
+          "edgeLabels": ["PDF", "CSV", "JSON", "Markdown"]
+        },
+        {
+          "id": "tap-export-btn",
+          "label": "Tap Export",
+          "screen": "export",
+          "swiftFile": "ExampleApp/Sources/UI/Views/ExportView.swift",
+          "type": "action",
+          "next": ["exporting"]
+        },
+        {
+          "id": "exporting",
+          "label": "Generating File",
+          "screen": "export",
+          "swiftFile": "ExampleApp/Sources/Data/Services/ExportService.swift",
+          "type": "system",
+          "next": ["share-sheet"]
+        },
+        {
+          "id": "share-sheet",
+          "label": "Share or Save File",
+          "screen": "export",
+          "swiftFile": "ExampleApp/Sources/UI/Views/ExportView.swift",
+          "type": "action",
+          "next": []
+        }
+      ]
+    },
+    {
+      "id": "settings",
+      "name": "App Settings",
+      "description": "Configure iCloud sync, security, AI providers, tags, and view app information",
+      "steps": [
+        {
+          "id": "tap-settings-tab",
+          "label": "Tap Settings Tab",
+          "screen": "main-list",
+          "swiftFile": "ExampleApp/Sources/UI/Views/MainTabView.swift",
+          "type": "action",
+          "next": ["settings-screen"]
+        },
+        {
+          "id": "settings-screen",
+          "label": "Settings Screen",
+          "screen": "settings",
+          "swiftFile": "ExampleApp/Sources/UI/Views/SettingsView.swift",
+          "type": "display",
+          "next": ["toggle-sync", "toggle-lock", "tap-ai", "tap-tags", "sync-now"],
+          "edgeLabels": ["iCloud Sync", "App Lock", "AI Agents", "Manage Tags", "Sync Now"]
+        },
+        {
+          "id": "toggle-sync",
+          "label": "Toggle iCloud Sync",
+          "screen": "settings",
+          "swiftFile": "ExampleApp/Sources/UI/Views/SettingsView.swift",
+          "type": "action",
+          "next": ["sync-check"]
+        },
+        {
+          "id": "sync-check",
+          "label": "Checking iCloud Account",
+          "screen": "settings",
+          "swiftFile": "ExampleApp/Sources/Data/CloudKit/CloudKitSyncEngine.swift",
+          "type": "system",
+          "next": ["settings-screen"]
+        },
+        {
+          "id": "toggle-lock",
+          "label": "Toggle App Lock",
+          "screen": "settings",
+          "swiftFile": "ExampleApp/Sources/UI/Views/SettingsView.swift",
+          "type": "action",
+          "next": ["verify-identity"]
+        },
+        {
+          "id": "verify-identity",
+          "label": "Verify Your Identity",
+          "screen": "settings",
+          "swiftFile": "ExampleApp/Sources/Data/Services/AuthenticationManager.swift",
+          "type": "system",
+          "next": ["settings-screen"]
+        },
+        {
+          "id": "tap-ai",
+          "label": "Open AI Agents",
+          "screen": "settings",
+          "swiftFile": "ExampleApp/Sources/UI/Views/SettingsView.swift",
+          "type": "action",
+          "next": ["ai-settings"]
+        },
+        {
+          "id": "ai-settings",
+          "label": "AI Provider Settings",
+          "screen": "llm-settings",
+          "swiftFile": "ExampleApp/Sources/UI/Views/LLMSettingsView.swift",
+          "type": "display",
+          "next": ["settings-screen"]
+        },
+        {
+          "id": "tap-tags",
+          "label": "Open Tag Management",
+          "screen": "settings",
+          "swiftFile": "ExampleApp/Sources/UI/Views/SettingsView.swift",
+          "type": "action",
+          "next": ["tag-screen"]
+        },
+        {
+          "id": "tag-screen",
+          "label": "Manage Your Tags",
+          "screen": "tag-management",
+          "swiftFile": "ExampleApp/Sources/UI/Views/TagManagementView.swift",
+          "type": "display",
+          "next": ["settings-screen"]
+        },
+        {
+          "id": "sync-now",
+          "label": "Tap Sync Now",
+          "screen": "settings",
+          "swiftFile": "ExampleApp/Sources/UI/Views/SettingsView.swift",
+          "type": "action",
+          "next": ["syncing"]
+        },
+        {
+          "id": "syncing",
+          "label": "Syncing with iCloud",
+          "screen": "settings",
+          "swiftFile": "ExampleApp/Sources/Data/CloudKit/CloudKitSyncEngine.swift",
+          "type": "system",
+          "next": ["settings-screen"]
+        }
+      ]
+    },
+    {
+      "id": "privacy",
+      "name": "Lock & Private Notes",
+      "description": "App lock screen protects all content; private notes require separate unlock within the app",
+      "steps": [
+        {
+          "id": "app-launch",
+          "label": "Open App (Locked)",
+          "screen": "lock-screen",
+          "swiftFile": "ExampleApp/Sources/UI/Views/LockScreenView.swift",
+          "type": "display",
+          "next": ["authenticate"]
+        },
+        {
+          "id": "authenticate",
+          "label": "Unlock with Face ID",
+          "screen": "lock-screen",
+          "swiftFile": "ExampleApp/Sources/UI/Views/LockScreenView.swift",
+          "type": "system",
+          "next": ["unlock-result"]
+        },
+        {
+          "id": "unlock-result",
+          "label": "Authentication Result",
+          "screen": "lock-screen",
+          "swiftFile": "ExampleApp/Sources/UI/Views/LockScreenView.swift",
+          "type": "decision",
+          "next": ["notes-list", "app-launch"],
+          "edgeLabels": ["Success", "Try Again"]
+        },
+        {
+          "id": "notes-list",
+          "label": "Your Notes",
+          "screen": "main-list",
+          "swiftFile": "ExampleApp/ContentView.swift",
+          "type": "display",
+          "next": ["tap-lock"]
+        },
+        {
+          "id": "tap-lock",
+          "label": "Tap Lock Icon",
+          "screen": "main-list",
+          "swiftFile": "ExampleApp/ContentView.swift",
+          "type": "action",
+          "next": ["private-unlock"]
+        },
+        {
+          "id": "private-unlock",
+          "label": "Private Notes Unlock",
+          "screen": "private-unlock",
+          "swiftFile": "ExampleApp/Sources/UI/Views/PrivateUnlockSheetView.swift",
+          "type": "display",
+          "next": ["private-auth"]
+        },
+        {
+          "id": "private-auth",
+          "label": "Authenticate Again",
+          "screen": "private-unlock",
+          "swiftFile": "ExampleApp/Sources/UI/Views/PrivateUnlockSheetView.swift",
+          "type": "system",
+          "next": ["private-notes"]
+        },
+        {
+          "id": "private-notes",
+          "label": "Private Notes",
+          "screen": "main-list",
+          "swiftFile": "ExampleApp/ContentView.swift",
+          "type": "display",
+          "next": []
+        }
+      ]
+    }
+  ]
+}

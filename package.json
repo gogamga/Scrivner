@@ -1,0 +1,17 @@
+{
+  "name": "workflows",
+  "private": true,
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "puppeteer": "^24.37.5",
+    "react": "19",
+    "react-dom": "19"
+  }
+}
